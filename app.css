@@ -2,30 +2,33 @@
     box-sizing: border-box;
 }
 body {
-    font-family: Arial;
+    font-family: Cambria, "Hoefler Text", "Liberation Serif", Times, "Times New Roman", "serif";
 }
 
-.new-note{
+.post-note{
     width: 300px;
     margin: 0 auto;
 }
 
-.new-note input,
-.new-note textarea,
-.new-note button{
-    font-family: Arial;
+.post-note input,
+.post-note textarea,
+
+.post-note button{
+    font-family: Cambria, "Hoefler Text", "Liberation Serif", Times, "Times New Roman", "serif";
     padding: 5px 10px;
     display: block;
     width: 100%;
     margin-bottom: 15px;
 }
+
 .notes {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
 }
+
 .note {
-    background-color: #ffda00;
+    background-color: #105E92;
     color: black;
     width: 300px;
     display: inline-block;
@@ -34,13 +37,16 @@ body {
     position: relative;
     min-height: 100px;
 }
+
 .note .title{
-    margin-bottom: 10px;
+    margin-bottom: 20px;
     font-weight: bold;
 }
+
 .note .title a {
     color: black;
 }
+
 .note .close {
     position: absolute;
     right: 10px;
@@ -48,6 +54,7 @@ body {
     background-color: transparent;
     border: none;
 }
+
 .note small {
     position: absolute;
     bottom: 10px;
