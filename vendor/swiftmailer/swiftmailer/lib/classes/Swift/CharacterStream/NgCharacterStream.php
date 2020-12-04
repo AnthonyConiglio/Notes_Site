@@ -112,9 +112,9 @@ class Swift_CharacterStream_NgCharacterStream implements Swift_CharacterStream
     }
 
     /**
-     * @see Swift_CharacterStream::flushContents()
+     * @see Swift_CharacterStream::flushdescriptions()
      */
-    public function flushContents()
+    public function flushdescriptions()
     {
         $this->datas = null;
         $this->map = null;
@@ -128,7 +128,7 @@ class Swift_CharacterStream_NgCharacterStream implements Swift_CharacterStream
      */
     public function importByteStream(Swift_OutputByteStream $os)
     {
-        $this->flushContents();
+        $this->flushdescriptions();
         $blocks = 512;
         $os->setReadPointer(0);
         while (false !== ($read = $os->read($blocks))) {
@@ -143,7 +143,7 @@ class Swift_CharacterStream_NgCharacterStream implements Swift_CharacterStream
      */
     public function importString($string)
     {
-        $this->flushContents();
+        $this->flushdescriptions();
         $this->write($string);
     }
 

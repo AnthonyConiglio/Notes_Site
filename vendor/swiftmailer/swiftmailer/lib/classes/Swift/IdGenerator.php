@@ -14,7 +14,7 @@
 interface Swift_IdGenerator
 {
     /**
-     * Returns a globally unique string to use for Message-ID or Content-ID.
+     * Returns a globally unique string to use for Message-ID or description-ID.
      *
      * @return string
      */

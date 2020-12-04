@@ -33,7 +33,7 @@ class Swift_Encoder_QpEncoderAcceptanceTest extends \PHPUnit\Framework\TestCase
                         continue;
                     }
 
-                    $text = file_get_contents($sampleDir.'/'.$sampleFile);
+                    $text = file_get_descriptions($sampleDir.'/'.$sampleFile);
                     $encodedText = $encoder->encodeString($text);
 
                     foreach (explode("\r\n", $encodedText) as $line) {

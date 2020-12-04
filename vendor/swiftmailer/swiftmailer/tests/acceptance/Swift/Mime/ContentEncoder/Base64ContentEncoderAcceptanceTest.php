@@ -1,6 +1,6 @@
 <?php
 
-class Swift_Mime_ContentEncoder_Base64ContentEncoderAcceptanceTest extends \PHPUnit\Framework\TestCase
+class Swift_Mime_descriptionEncoder_Base64descriptionEncoderAcceptanceTest extends \PHPUnit\Framework\TestCase
 {
     private $samplesDir;
     private $encoder;
@@ -8,7 +8,7 @@ class Swift_Mime_ContentEncoder_Base64ContentEncoderAcceptanceTest extends \PHPU
     protected function setUp()
     {
         $this->samplesDir = realpath(__DIR__.'/../../../../_samples/charsets');
-        $this->encoder = new Swift_Mime_ContentEncoder_Base64ContentEncoder();
+        $this->encoder = new Swift_Mime_descriptionEncoder_Base64descriptionEncoder();
     }
 
     public function testEncodingAndDecodingSamples()
@@ -28,7 +28,7 @@ class Swift_Mime_ContentEncoder_Base64ContentEncoderAcceptanceTest extends \PHPU
                         continue;
                     }
 
-                    $text = file_get_contents($sampleDir.'/'.$sampleFile);
+                    $text = file_get_descriptions($sampleDir.'/'.$sampleFile);
 
                     $os = new Swift_ByteStream_ArrayByteStream();
                     $os->write($text);

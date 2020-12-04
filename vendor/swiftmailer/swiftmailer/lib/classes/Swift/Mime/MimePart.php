@@ -32,10 +32,10 @@ class Swift_Mime_MimePart extends Swift_Mime_SimpleMimeEntity
      *
      * @param string $charset
      */
-    public function __construct(Swift_Mime_SimpleHeaderSet $headers, Swift_Mime_ContentEncoder $encoder, Swift_KeyCache $cache, Swift_IdGenerator $idGenerator, $charset = null)
+    public function __construct(Swift_Mime_SimpleHeaderSet $headers, Swift_Mime_descriptionEncoder $encoder, Swift_KeyCache $cache, Swift_IdGenerator $idGenerator, $charset = null)
     {
         parent::__construct($headers, $encoder, $cache, $idGenerator);
-        $this->setContentType('text/plain');
+        $this->setdescriptionType('text/plain');
         if (null !== $charset) {
             $this->setCharset($charset);
         }
@@ -46,19 +46,19 @@ class Swift_Mime_MimePart extends Swift_Mime_SimpleMimeEntity
      * {@link Swift_OutputByteStream}.
      *
      * @param mixed  $body
-     * @param string $contentType optional
+     * @param string $descriptionType optional
      * @param string $charset     optional
      *
      * @return $this
      */
-    public function setBody($body, $contentType = null, $charset = null)
+    public function setBody($body, $descriptionType = null, $charset = null)
     {
         if (isset($charset)) {
             $this->setCharset($charset);
         }
         $body = $this->convertString($body);
 
-        parent::setBody($body, $contentType);
+        parent::setBody($body, $descriptionType);
 
         return $this;
     }
@@ -70,7 +70,7 @@ class Swift_Mime_MimePart extends Swift_Mime_SimpleMimeEntity
      */
     public function getCharset()
     {
-        return $this->getHeaderParameter('Content-Type', 'charset');
+        return $this->getHeaderParameter('description-Type', 'charset');
     }
 
     /**
@@ -82,7 +82,7 @@ class Swift_Mime_MimePart extends Swift_Mime_SimpleMimeEntity
      */
     public function setCharset($charset)
     {
-        $this->setHeaderParameter('Content-Type', 'charset', $charset);
+        $this->setHeaderParameter('description-Type', 'charset', $charset);
         if ($charset !== $this->userCharset) {
             $this->clearCache();
         }
@@ -99,7 +99,7 @@ class Swift_Mime_MimePart extends Swift_Mime_SimpleMimeEntity
      */
     public function getFormat()
     {
-        return $this->getHeaderParameter('Content-Type', 'format');
+        return $this->getHeaderParameter('description-Type', 'format');
     }
 
     /**
@@ -111,7 +111,7 @@ class Swift_Mime_MimePart extends Swift_Mime_SimpleMimeEntity
      */
     public function setFormat($format)
     {
-        $this->setHeaderParameter('Content-Type', 'format', $format);
+        $this->setHeaderParameter('description-Type', 'format', $format);
         $this->userFormat = $format;
 
         return $this;
@@ -124,7 +124,7 @@ class Swift_Mime_MimePart extends Swift_Mime_SimpleMimeEntity
      */
     public function getDelSp()
     {
-        return 'yes' === $this->getHeaderParameter('Content-Type', 'delsp');
+        return 'yes' === $this->getHeaderParameter('description-Type', 'delsp');
     }
 
     /**
@@ -136,7 +136,7 @@ class Swift_Mime_MimePart extends Swift_Mime_SimpleMimeEntity
      */
     public function setDelSp($delsp = true)
     {
-        $this->setHeaderParameter('Content-Type', 'delsp', $delsp ? 'yes' : null);
+        $this->setHeaderParameter('description-Type', 'delsp', $delsp ? 'yes' : null);
         $this->userDelSp = $delsp;
 
         return $this;
@@ -165,14 +165,14 @@ class Swift_Mime_MimePart extends Swift_Mime_SimpleMimeEntity
         $this->setCharset($charset);
     }
 
-    /** Fix the content-type and encoding of this entity */
+    /** Fix the description-type and encoding of this entity */
     protected function fixHeaders()
     {
         parent::fixHeaders();
         if (count($this->getChildren())) {
-            $this->setHeaderParameter('Content-Type', 'charset', null);
-            $this->setHeaderParameter('Content-Type', 'format', null);
-            $this->setHeaderParameter('Content-Type', 'delsp', null);
+            $this->setHeaderParameter('description-Type', 'charset', null);
+            $this->setHeaderParameter('description-Type', 'format', null);
+            $this->setHeaderParameter('description-Type', 'delsp', null);
         } else {
             $this->setCharset($this->userCharset);
             $this->setFormat($this->userFormat);

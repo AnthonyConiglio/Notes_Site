@@ -22,9 +22,9 @@ class Swift_EmbeddedFile extends Swift_Mime_EmbeddedFile
      *
      * @param string|Swift_OutputByteStream $data
      * @param string                        $filename
-     * @param string                        $contentType
+     * @param string                        $descriptionType
      */
-    public function __construct($data = null, $filename = null, $contentType = null)
+    public function __construct($data = null, $filename = null, $descriptionType = null)
     {
         call_user_func_array(
             [$this, 'Swift_Mime_EmbeddedFile::__construct'],
@@ -34,8 +34,8 @@ class Swift_EmbeddedFile extends Swift_Mime_EmbeddedFile
 
         $this->setBody($data);
         $this->setFilename($filename);
-        if ($contentType) {
-            $this->setContentType($contentType);
+        if ($descriptionType) {
+            $this->setdescriptionType($descriptionType);
         }
     }
 

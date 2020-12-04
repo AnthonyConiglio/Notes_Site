@@ -12,7 +12,6 @@ $transport = (new Swift_SmtpTransport('smtp.gmail.com', 465,'ssl'))
 $mailer = new Swift_Mailer($transport);
 
 
-
 function sendVerificationEmail($userEmail, $token){
 	global $mailer;
 	

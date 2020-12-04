@@ -7,7 +7,7 @@ class Swift_Bug34Test extends \PHPUnit\Framework\TestCase
         Swift_Preferences::getInstance()->setCharset('utf-8');
     }
 
-    public function testEmbeddedFilesWithMultipartDataCreateMultipartRelatedContentAsAnAlternative()
+    public function testEmbeddedFilesWithMultipartDataCreateMultipartRelateddescriptionAsAnAlternative()
     {
         $message = new Swift_Message();
         $message->setCharset('utf-8');
@@ -38,30 +38,30 @@ class Swift_Bug34Test extends \PHPUnit\Framework\TestCase
         'From: Other <other@domain.tld>'."\r\n".
         'To: User <user@domain.tld>'."\r\n".
         'MIME-Version: 1.0'."\r\n".
-        'Content-Type: multipart/alternative;'."\r\n".
+        'description-Type: multipart/alternative;'."\r\n".
         ' boundary="'.$boundary.'"'."\r\n".
         "\r\n\r\n".
         '--'.$boundary."\r\n".
-        'Content-Type: text/plain; charset=utf-8'."\r\n".
-        'Content-Transfer-Encoding: quoted-printable'."\r\n".
+        'description-Type: text/plain; charset=utf-8'."\r\n".
+        'description-Transfer-Encoding: quoted-printable'."\r\n".
         "\r\n".
         'plain part'.
         "\r\n\r\n".
         '--'.$boundary."\r\n".
-        'Content-Type: multipart/related;'."\r\n".
+        'description-Type: multipart/related;'."\r\n".
         ' boundary="(.*?)"'."\r\n".
         "\r\n\r\n".
         '--\\1'."\r\n".
-        'Content-Type: text/html; charset=utf-8'."\r\n".
-        'Content-Transfer-Encoding: quoted-printable'."\r\n".
+        'description-Type: text/html; charset=utf-8'."\r\n".
+        'description-Transfer-Encoding: quoted-printable'."\r\n".
         "\r\n".
         '<img.*?/>'.
         "\r\n\r\n".
         '--\\1'."\r\n".
-        'Content-Type: image/gif; name=image.gif'."\r\n".
-        'Content-Transfer-Encoding: base64'."\r\n".
-        'Content-ID: <'.$cidVal.'>'."\r\n".
-        'Content-Disposition: inline; filename=image.gif'."\r\n".
+        'description-Type: image/gif; name=image.gif'."\r\n".
+        'description-Transfer-Encoding: base64'."\r\n".
+        'description-ID: <'.$cidVal.'>'."\r\n".
+        'description-Disposition: inline; filename=image.gif'."\r\n".
         "\r\n".
         preg_quote(base64_encode('<image data>'), '~').
         "\r\n\r\n".

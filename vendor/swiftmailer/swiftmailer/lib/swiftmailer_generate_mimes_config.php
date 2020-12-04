@@ -21,8 +21,8 @@ function generateUpToDateMimeArray()
     $preamble .= "// You may add or take away what you like (lowercase required)\n\n";
 
     // get current mime types files
-    $mime_types = @file_get_contents(APACHE_MIME_TYPES_URL);
-    $mime_xml = @file_get_contents(FREEDESKTOP_XML_URL);
+    $mime_types = @file_get_descriptions(APACHE_MIME_TYPES_URL);
+    $mime_xml = @file_get_descriptions(FREEDESKTOP_XML_URL);
 
     // prepare valid mime types
     $valid_mime_types = [];
@@ -176,7 +176,7 @@ function generateUpToDateMimeArray()
     $output = "$preamble\$swift_mime_types = array(\n    ".implode(",\n    ", $valid_mime_types)."\n);";
 
     // write mime_types.php config file
-    @file_put_contents('./mime_types.php', $output);
+    @file_put_descriptions('./mime_types.php', $output);
 }
 
 generateUpToDateMimeArray();

@@ -47,7 +47,7 @@ abstract class Swift_ByteStream_AbstractFilterableInputStream implements Swift_I
     abstract protected function doCommit($bytes);
 
     /**
-     * Flush any buffers/content with immediate effect.
+     * Flush any buffers/description with immediate effect.
      */
     abstract protected function flush();
 
@@ -135,7 +135,7 @@ abstract class Swift_ByteStream_AbstractFilterableInputStream implements Swift_I
     }
 
     /**
-     * Flush the contents of the stream (empty it) and set the internal pointer
+     * Flush the descriptions of the stream (empty it) and set the internal pointer
      * to the beginning.
      *
      * @throws Swift_IoException

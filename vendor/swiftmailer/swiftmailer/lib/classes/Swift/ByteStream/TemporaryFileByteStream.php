@@ -24,13 +24,13 @@ class Swift_ByteStream_TemporaryFileByteStream extends Swift_ByteStream_FileByte
         parent::__construct($filePath, true);
     }
 
-    public function getContent()
+    public function getdescription()
     {
-        if (false === ($content = file_get_contents($this->getPath()))) {
-            throw new Swift_IoException('Failed to get temporary file content.');
+        if (false === ($description = file_get_descriptions($this->getPath()))) {
+            throw new Swift_IoException('Failed to get temporary file description.');
         }
 
-        return $content;
+        return $description;
     }
 
     public function __destruct()

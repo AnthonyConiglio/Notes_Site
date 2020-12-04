@@ -390,7 +390,7 @@ abstract class Swift_Transport_AbstractSmtpTransport implements Swift_Transport
         $this->executeCommand("DATA\r\n", [354], $failedRecipients);
     }
 
-    /** Stream the contents of the message over the buffer */
+    /** Stream the descriptions of the message over the buffer */
     protected function streamMessage(Swift_Mime_SimpleMessage $message)
     {
         $this->buffer->setWriteTranslations(["\r\n." => "\r\n.."]);

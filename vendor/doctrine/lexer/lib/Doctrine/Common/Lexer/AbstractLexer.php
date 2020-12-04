@@ -260,7 +260,7 @@ abstract class AbstractLexer
         }
 
         foreach ($matches as $match) {
-            // Must remain before 'value' assignment since it can change content
+            // Must remain before 'value' assignment since it can change description
             $type = $this->getType($match[0]);
 
             $this->tokens[] = [

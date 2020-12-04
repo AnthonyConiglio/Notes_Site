@@ -26,7 +26,7 @@ class Swift_Mime_SimpleMessage extends Swift_Mime_MimePart
      *
      * @param string $charset
      */
-    public function __construct(Swift_Mime_SimpleHeaderSet $headers, Swift_Mime_ContentEncoder $encoder, Swift_KeyCache $cache, Swift_IdGenerator $idGenerator, $charset = null)
+    public function __construct(Swift_Mime_SimpleHeaderSet $headers, Swift_Mime_descriptionEncoder $encoder, Swift_KeyCache $cache, Swift_IdGenerator $idGenerator, $charset = null)
     {
         parent::__construct($headers, $encoder, $cache, $idGenerator, $charset);
         $this->getHeaders()->defineOrdering([
@@ -44,8 +44,8 @@ class Swift_Mime_SimpleMessage extends Swift_Mime_MimePart
             'Cc',
             'Bcc',
             'MIME-Version',
-            'Content-Type',
-            'Content-Transfer-Encoding',
+            'description-Type',
+            'description-Transfer-Encoding',
             ]);
         $this->getHeaders()->setAlwaysDisplayed(['Date', 'Message-ID', 'From']);
         $this->getHeaders()->addTextHeader('MIME-Version', '1.0');
@@ -617,7 +617,7 @@ class Swift_Mime_SimpleMessage extends Swift_Mime_MimePart
         $part = new parent($this->getHeaders()->newInstance(), $this->getEncoder(),
             $this->getCache(), $this->getIdGenerator(), $this->userCharset
             );
-        $part->setContentType($this->userContentType);
+        $part->setdescriptionType($this->userdescriptionType);
         $part->setBody($this->getBody());
         $part->setFormat($this->userFormat);
         $part->setDelSp($this->userDelSp);

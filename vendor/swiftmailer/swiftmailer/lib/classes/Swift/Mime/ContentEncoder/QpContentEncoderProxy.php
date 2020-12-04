@@ -9,21 +9,21 @@
  */
 
 /**
- * Proxy for quoted-printable content encoders.
+ * Proxy for quoted-printable description encoders.
  *
  * Switches on the best QP encoder implementation for current charset.
  *
  * @author Jean-François Simon <jeanfrancois.simon@sensiolabs.com>
  */
-class Swift_Mime_ContentEncoder_QpContentEncoderProxy implements Swift_Mime_ContentEncoder
+class Swift_Mime_descriptionEncoder_QpdescriptionEncoderProxy implements Swift_Mime_descriptionEncoder
 {
     /**
-     * @var Swift_Mime_ContentEncoder_QpContentEncoder
+     * @var Swift_Mime_descriptionEncoder_QpdescriptionEncoder
      */
     private $safeEncoder;
 
     /**
-     * @var Swift_Mime_ContentEncoder_NativeQpContentEncoder
+     * @var Swift_Mime_descriptionEncoder_NativeQpdescriptionEncoder
      */
     private $nativeEncoder;
 
@@ -37,7 +37,7 @@ class Swift_Mime_ContentEncoder_QpContentEncoderProxy implements Swift_Mime_Cont
      *
      * @param string|null $charset
      */
-    public function __construct(Swift_Mime_ContentEncoder_QpContentEncoder $safeEncoder, Swift_Mime_ContentEncoder_NativeQpContentEncoder $nativeEncoder, $charset)
+    public function __construct(Swift_Mime_descriptionEncoder_QpdescriptionEncoder $safeEncoder, Swift_Mime_descriptionEncoder_NativeQpdescriptionEncoder $nativeEncoder, $charset)
     {
         $this->safeEncoder = $safeEncoder;
         $this->nativeEncoder = $nativeEncoder;
@@ -87,7 +87,7 @@ class Swift_Mime_ContentEncoder_QpContentEncoderProxy implements Swift_Mime_Cont
     }
 
     /**
-     * @return Swift_Mime_ContentEncoder
+     * @return Swift_Mime_descriptionEncoder
      */
     private function getEncoder()
     {

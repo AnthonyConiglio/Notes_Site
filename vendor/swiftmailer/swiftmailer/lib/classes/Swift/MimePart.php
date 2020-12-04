@@ -21,10 +21,10 @@ class Swift_MimePart extends Swift_Mime_MimePart
      * Details may be optionally passed into the constructor.
      *
      * @param string $body
-     * @param string $contentType
+     * @param string $descriptionType
      * @param string $charset
      */
-    public function __construct($body = null, $contentType = null, $charset = null)
+    public function __construct($body = null, $descriptionType = null, $charset = null)
     {
         call_user_func_array(
             [$this, 'Swift_Mime_MimePart::__construct'],
@@ -38,8 +38,8 @@ class Swift_MimePart extends Swift_Mime_MimePart
         }
         $this->setBody($body);
         $this->setCharset($charset);
-        if ($contentType) {
-            $this->setContentType($contentType);
+        if ($descriptionType) {
+            $this->setdescriptionType($descriptionType);
         }
     }
 }

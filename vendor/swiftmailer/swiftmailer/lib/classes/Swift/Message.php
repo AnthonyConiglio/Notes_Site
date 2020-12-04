@@ -37,10 +37,10 @@ class Swift_Message extends Swift_Mime_SimpleMessage
      *
      * @param string $subject
      * @param string $body
-     * @param string $contentType
+     * @param string $descriptionType
      * @param string $charset
      */
-    public function __construct($subject = null, $body = null, $contentType = null, $charset = null)
+    public function __construct($subject = null, $body = null, $descriptionType = null, $charset = null)
     {
         call_user_func_array(
             [$this, 'Swift_Mime_SimpleMessage::__construct'],
@@ -55,8 +55,8 @@ class Swift_Message extends Swift_Mime_SimpleMessage
         $this->setSubject($subject);
         $this->setBody($body);
         $this->setCharset($charset);
-        if ($contentType) {
-            $this->setContentType($contentType);
+        if ($descriptionType) {
+            $this->setdescriptionType($descriptionType);
         }
     }
 
@@ -64,14 +64,14 @@ class Swift_Message extends Swift_Mime_SimpleMessage
      * Add a MimePart to this Message.
      *
      * @param string|Swift_OutputByteStream $body
-     * @param string                        $contentType
+     * @param string                        $descriptionType
      * @param string                        $charset
      *
      * @return $this
      */
-    public function addPart($body, $contentType = null, $charset = null)
+    public function addPart($body, $descriptionType = null, $charset = null)
     {
-        return $this->attach((new Swift_MimePart($body, $contentType, $charset))->setEncoder($this->getEncoder()));
+        return $this->attach((new Swift_MimePart($body, $descriptionType, $charset))->setEncoder($this->getEncoder()));
     }
 
     /**

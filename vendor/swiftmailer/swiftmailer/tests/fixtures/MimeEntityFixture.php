@@ -4,13 +4,13 @@ class MimeEntityFixture extends Swift_Mime_SimpleMimeEntity
 {
     private $level;
     private $string;
-    private $contentType;
+    private $descriptionType;
 
-    public function __construct($level = null, $string = '', $contentType = null)
+    public function __construct($level = null, $string = '', $descriptionType = null)
     {
         $this->level = $level;
         $this->string = $string;
-        $this->contentType = $contentType;
+        $this->descriptionType = $descriptionType;
     }
 
     public function getNestingLevel()
@@ -23,9 +23,9 @@ class MimeEntityFixture extends Swift_Mime_SimpleMimeEntity
         return $this->string;
     }
 
-    public function getContentType()
+    public function getdescriptionType()
     {
-        return $this->contentType;
+        return $this->descriptionType;
     }
 
     // These methods are here to account for the implemented interfaces
@@ -41,7 +41,7 @@ class MimeEntityFixture extends Swift_Mime_SimpleMimeEntity
     {
     }
 
-    public function setBody($body, $contentType = null)
+    public function setBody($body, $descriptionType = null)
     {
     }
 
@@ -53,7 +53,7 @@ class MimeEntityFixture extends Swift_Mime_SimpleMimeEntity
     {
     }
 
-    public function encoderChanged(Swift_Mime_ContentEncoder $encoder)
+    public function encoderChanged(Swift_Mime_descriptionEncoder $encoder)
     {
     }
 

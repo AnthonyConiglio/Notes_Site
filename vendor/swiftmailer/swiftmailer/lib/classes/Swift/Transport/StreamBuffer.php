@@ -212,7 +212,7 @@ class Swift_Transport_StreamBuffer extends Swift_ByteStream_AbstractFilterableIn
     {
     }
 
-    /** Flush the stream contents */
+    /** Flush the stream descriptions */
     protected function flush()
     {
         if (isset($this->in)) {
@@ -298,7 +298,7 @@ class Swift_Transport_StreamBuffer extends Swift_ByteStream_AbstractFilterableIn
         $pipes = [];
         $this->stream = proc_open($command, $descriptorSpec, $pipes);
         stream_set_blocking($pipes[2], 0);
-        if ($err = stream_get_contents($pipes[2])) {
+        if ($err = stream_get_descriptions($pipes[2])) {
             throw new Swift_TransportException(
                 'Process could not be started ['.$err.']'
                 );

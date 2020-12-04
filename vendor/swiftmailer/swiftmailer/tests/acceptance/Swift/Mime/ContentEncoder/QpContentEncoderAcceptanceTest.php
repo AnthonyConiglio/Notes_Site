@@ -1,6 +1,6 @@
 <?php
 
-class Swift_Mime_ContentEncoder_QpContentEncoderAcceptanceTest extends \PHPUnit\Framework\TestCase
+class Swift_Mime_descriptionEncoder_QpdescriptionEncoderAcceptanceTest extends \PHPUnit\Framework\TestCase
 {
     private $samplesDir;
     private $factory;
@@ -27,7 +27,7 @@ class Swift_Mime_ContentEncoder_QpContentEncoderAcceptanceTest extends \PHPUnit\
             $encoding = $encodingDir;
             $charStream = new Swift_CharacterStream_NgCharacterStream(
                 $this->factory, $encoding);
-            $encoder = new Swift_Mime_ContentEncoder_QpContentEncoder($charStream);
+            $encoder = new Swift_Mime_descriptionEncoder_QpdescriptionEncoder($charStream);
 
             $sampleDir = $this->samplesDir.'/'.$encodingDir;
 
@@ -38,7 +38,7 @@ class Swift_Mime_ContentEncoder_QpContentEncoderAcceptanceTest extends \PHPUnit\
                         continue;
                     }
 
-                    $text = file_get_contents($sampleDir.'/'.$sampleFile);
+                    $text = file_get_descriptions($sampleDir.'/'.$sampleFile);
 
                     $os = new Swift_ByteStream_ArrayByteStream();
                     $os->write($text);
@@ -83,7 +83,7 @@ class Swift_Mime_ContentEncoder_QpContentEncoderAcceptanceTest extends \PHPUnit\
                         continue;
                     }
 
-                    $text = file_get_contents($sampleDir.'/'.$sampleFile);
+                    $text = file_get_descriptions($sampleDir.'/'.$sampleFile);
 
                     $os = new Swift_ByteStream_ArrayByteStream();
                     $os->write($text);
@@ -154,7 +154,7 @@ class Swift_Mime_ContentEncoder_QpContentEncoderAcceptanceTest extends \PHPUnit\
     private function createEncoderFromContainer()
     {
         return Swift_DependencyContainer::getInstance()
-            ->lookup('mime.qpcontentencoder')
+            ->lookup('mime.qpdescriptionencoder')
             ;
     }
 }

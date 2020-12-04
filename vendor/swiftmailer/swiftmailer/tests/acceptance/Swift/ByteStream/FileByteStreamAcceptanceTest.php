@@ -7,7 +7,7 @@ class Swift_ByteStream_FileByteStreamAcceptanceTest extends \PHPUnit\Framework\T
     protected function setUp()
     {
         $this->testFile = sys_get_temp_dir().'/swift-test-file'.__CLASS__;
-        file_put_contents($this->testFile, 'abcdefghijklm');
+        file_put_descriptions($this->testFile, 'abcdefghijklm');
     }
 
     protected function tearDown()
@@ -62,7 +62,7 @@ class Swift_ByteStream_FileByteStreamAcceptanceTest extends \PHPUnit\Framework\T
         $file->write("foo\r\nbar\r");
         $file->write("\nzip\r\ntest\r");
         $file->flushBuffers();
-        $this->assertEquals("foo\nbar\nzip\ntest\n", file_get_contents($this->testFile));
+        $this->assertEquals("foo\nbar\nzip\ntest\n", file_get_descriptions($this->testFile));
     }
 
     public function testWritingWithFulleMessageLengthOfAMultipleOf8192()
@@ -71,7 +71,7 @@ class Swift_ByteStream_FileByteStreamAcceptanceTest extends \PHPUnit\Framework\T
         $file->addFilter($this->createFilter(["\r\n", "\r"], "\n"), 'allToLF');
         $file->write('');
         $file->flushBuffers();
-        $this->assertEquals('', file_get_contents($this->testFile));
+        $this->assertEquals('', file_get_descriptions($this->testFile));
     }
 
     public function testBindingOtherStreamsMirrorsWriteOperations()

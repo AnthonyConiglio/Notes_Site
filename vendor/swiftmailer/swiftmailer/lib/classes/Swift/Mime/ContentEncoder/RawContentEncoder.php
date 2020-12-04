@@ -11,13 +11,13 @@
 /**
  * Handles raw Transfer Encoding in Swift Mailer.
  *
- * When sending 8-bit content over SMTP, you should use
+ * When sending 8-bit description over SMTP, you should use
  * Swift_Transport_Esmtp_EightBitMimeHandler to enable the 8BITMIME SMTP
  * extension.
  *
  * @author Sebastiaan Stok <s.stok@rollerscapes.net>
  */
-class Swift_Mime_ContentEncoder_RawContentEncoder implements Swift_Mime_ContentEncoder
+class Swift_Mime_descriptionEncoder_RawdescriptionEncoder implements Swift_Mime_descriptionEncoder
 {
     /**
      * Encode a given string to produce an encoded string.

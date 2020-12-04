@@ -29,7 +29,7 @@ class Swift_Smoke_InternationalSmokeTest extends SwiftMailerSmokeTestCase
                 'Δεν βρέθηκαν λέξεις.'
                 )
             ->attach(Swift_Attachment::fromPath($this->attFile)
-                ->setContentType('application/zip')
+                ->setdescriptionType('application/zip')
                 ->setFilename('κείμενο, εδάφιο, θέμα.zip')
                 )
             ;

@@ -12,7 +12,7 @@ use Egulias\EmailValidator\EmailValidator;
 use Egulias\EmailValidator\Validation\RFCValidation;
 
 /**
- * An ID MIME Header for something like Message-ID or Content-ID.
+ * An ID MIME Header for something like Message-ID or description-ID.
  *
  * @author Chris Corbyn
  */

@@ -45,20 +45,20 @@ class Swift_Bug38Test extends \PHPUnit\Framework\TestCase
             'To: user@domain.tld'."\r\n".
             'Cc: other@domain.tld'."\r\n".
             'MIME-Version: 1.0'."\r\n".
-            'Content-Type: multipart/related;'."\r\n".
+            'description-Type: multipart/related;'."\r\n".
             ' boundary="'.$boundary.'"'."\r\n".
             "\r\n\r\n".
             '--'.$boundary."\r\n".
-            'Content-Type: text/html; charset=utf-8'."\r\n".
-            'Content-Transfer-Encoding: quoted-printable'."\r\n".
+            'description-Type: text/html; charset=utf-8'."\r\n".
+            'description-Transfer-Encoding: quoted-printable'."\r\n".
             "\r\n".
             'HTML part'.
             "\r\n\r\n".
             '--'.$boundary."\r\n".
-            'Content-Type: image/gif; name=image.gif'."\r\n".
-            'Content-Transfer-Encoding: base64'."\r\n".
-            'Content-ID: <'.preg_quote($imgId, '~').'>'."\r\n".
-            'Content-Disposition: inline; filename=image.gif'."\r\n".
+            'description-Type: image/gif; name=image.gif'."\r\n".
+            'description-Transfer-Encoding: base64'."\r\n".
+            'description-ID: <'.preg_quote($imgId, '~').'>'."\r\n".
+            'description-Disposition: inline; filename=image.gif'."\r\n".
             "\r\n".
             preg_quote(base64_encode('<data>'), '~').
             "\r\n\r\n".
@@ -94,20 +94,20 @@ class Swift_Bug38Test extends \PHPUnit\Framework\TestCase
         'To: user@domain.tld'."\r\n".
         'Cc: other@domain.tld'."\r\n".
         'MIME-Version: 1.0'."\r\n".
-        'Content-Type: multipart/related;'."\r\n".
+        'description-Type: multipart/related;'."\r\n".
         ' boundary="'.$boundary.'"'."\r\n".
         "\r\n\r\n".
         '--'.$boundary."\r\n".
-        'Content-Type: text/html; charset=utf-8'."\r\n".
-        'Content-Transfer-Encoding: quoted-printable'."\r\n".
+        'description-Type: text/html; charset=utf-8'."\r\n".
+        'description-Transfer-Encoding: quoted-printable'."\r\n".
         "\r\n".
         'HTML part'.
         "\r\n\r\n".
         '--'.$boundary."\r\n".
-        'Content-Type: image/gif; name=image.gif'."\r\n".
-        'Content-Transfer-Encoding: base64'."\r\n".
-        'Content-ID: <'.preg_quote($imgId, '~').'>'."\r\n".
-        'Content-Disposition: inline; filename=image.gif'."\r\n".
+        'description-Type: image/gif; name=image.gif'."\r\n".
+        'description-Transfer-Encoding: base64'."\r\n".
+        'description-ID: <'.preg_quote($imgId, '~').'>'."\r\n".
+        'description-Disposition: inline; filename=image.gif'."\r\n".
         "\r\n".
         preg_quote(base64_encode('<data>'), '~').
         "\r\n\r\n".
@@ -154,21 +154,21 @@ class Swift_Bug38Test extends \PHPUnit\Framework\TestCase
             'To: user@domain.tld'."\r\n".
             'Cc: other@domain.tld'."\r\n".
             'MIME-Version: 1.0'."\r\n".
-            'Content-Type: multipart/mixed;'."\r\n".
+            'description-Type: multipart/mixed;'."\r\n".
             ' boundary="'.$boundary.'"'."\r\n".
             "\r\n\r\n".
             '--'.$boundary."\r\n".
-            'Content-Type: text/html; charset=utf-8'."\r\n".
-            'Content-Transfer-Encoding: quoted-printable'."\r\n".
+            'description-Type: text/html; charset=utf-8'."\r\n".
+            'description-Transfer-Encoding: quoted-printable'."\r\n".
             "\r\n".
             'HTML part'.
             "\r\n\r\n".
             '--'.$boundary."\r\n".
-            'Content-Type: '.$this->attFileType.'; name='.$this->attFileName."\r\n".
-            'Content-Transfer-Encoding: base64'."\r\n".
-            'Content-Disposition: attachment; filename='.$this->attFileName."\r\n".
+            'description-Type: '.$this->attFileType.'; name='.$this->attFileName."\r\n".
+            'description-Transfer-Encoding: base64'."\r\n".
+            'description-Disposition: attachment; filename='.$this->attFileName."\r\n".
             "\r\n".
-            preg_quote(base64_encode(file_get_contents($this->attFile)), '~').
+            preg_quote(base64_encode(file_get_descriptions($this->attFile)), '~').
             "\r\n\r\n".
             '--'.$boundary.'--'."\r\n".
             '$~D'

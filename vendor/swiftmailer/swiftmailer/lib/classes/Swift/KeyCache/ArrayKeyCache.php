@@ -16,11 +16,11 @@
 class Swift_KeyCache_ArrayKeyCache implements Swift_KeyCache
 {
     /**
-     * Cache contents.
+     * Cache descriptions.
      *
      * @var array
      */
-    private $contents = [];
+    private $descriptions = [];
 
     /**
      * An InputStream for cloning.
@@ -53,13 +53,13 @@ class Swift_KeyCache_ArrayKeyCache implements Swift_KeyCache
         $this->prepareCache($nsKey);
         switch ($mode) {
             case self::MODE_WRITE:
-                $this->contents[$nsKey][$itemKey] = $string;
+                $this->descriptions[$nsKey][$itemKey] = $string;
                 break;
             case self::MODE_APPEND:
                 if (!$this->hasKey($nsKey, $itemKey)) {
-                    $this->contents[$nsKey][$itemKey] = '';
+                    $this->descriptions[$nsKey][$itemKey] = '';
                 }
-                $this->contents[$nsKey][$itemKey] .= $string;
+                $this->descriptions[$nsKey][$itemKey] .= $string;
                 break;
             default:
                 throw new Swift_SwiftException(
@@ -87,10 +87,10 @@ class Swift_KeyCache_ArrayKeyCache implements Swift_KeyCache
                 // no break
             case self::MODE_APPEND:
                 if (!$this->hasKey($nsKey, $itemKey)) {
-                    $this->contents[$nsKey][$itemKey] = '';
+                    $this->descriptions[$nsKey][$itemKey] = '';
                 }
                 while (false !== $bytes = $os->read(8192)) {
-                    $this->contents[$nsKey][$itemKey] .= $bytes;
+                    $this->descriptions[$nsKey][$itemKey] .= $bytes;
                 }
                 break;
             default:
@@ -136,7 +136,7 @@ class Swift_KeyCache_ArrayKeyCache implements Swift_KeyCache
     {
         $this->prepareCache($nsKey);
         if ($this->hasKey($nsKey, $itemKey)) {
-            return $this->contents[$nsKey][$itemKey];
+            return $this->descriptions[$nsKey][$itemKey];
         }
     }
 
@@ -165,7 +165,7 @@ class Swift_KeyCache_ArrayKeyCache implements Swift_KeyCache
     {
         $this->prepareCache($nsKey);
 
-        return array_key_exists($itemKey, $this->contents[$nsKey]);
+        return array_key_exists($itemKey, $this->descriptions[$nsKey]);
     }
 
     /**
@@ -176,7 +176,7 @@ class Swift_KeyCache_ArrayKeyCache implements Swift_KeyCache
      */
     public function clearKey($nsKey, $itemKey)
     {
-        unset($this->contents[$nsKey][$itemKey]);
+        unset($this->descriptions[$nsKey][$itemKey]);
     }
 
     /**
@@ -186,7 +186,7 @@ class Swift_KeyCache_ArrayKeyCache implements Swift_KeyCache
      */
     public function clearAll($nsKey)
     {
-        unset($this->contents[$nsKey]);
+        unset($this->descriptions[$nsKey]);
     }
 
     /**
@@ -196,8 +196,8 @@ class Swift_KeyCache_ArrayKeyCache implements Swift_KeyCache
      */
     private function prepareCache($nsKey)
     {
-        if (!array_key_exists($nsKey, $this->contents)) {
-            $this->contents[$nsKey] = [];
+        if (!array_key_exists($nsKey, $this->descriptions)) {
+            $this->descriptions[$nsKey] = [];
         }
     }
 }

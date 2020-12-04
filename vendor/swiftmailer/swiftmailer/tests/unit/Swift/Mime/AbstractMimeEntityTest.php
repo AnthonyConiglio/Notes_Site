@@ -13,20 +13,20 @@ abstract class Swift_Mime_AbstractMimeEntityTest extends \SwiftMailerTestCase
         $this->assertSame($headers, $entity->getHeaders());
     }
 
-    public function testContentTypeIsReturnedFromHeader()
+    public function testdescriptionTypeIsReturnedFromHeader()
     {
-        $ctype = $this->createHeader('Content-Type', 'image/jpeg-test');
-        $headers = $this->createHeaderSet(['Content-Type' => $ctype]);
+        $ctype = $this->createHeader('description-Type', 'image/jpeg-test');
+        $headers = $this->createHeaderSet(['description-Type' => $ctype]);
         $entity = $this->createEntity($headers, $this->createEncoder(),
             $this->createCache()
             );
-        $this->assertEquals('image/jpeg-test', $entity->getContentType());
+        $this->assertEquals('image/jpeg-test', $entity->getdescriptionType());
     }
 
-    public function testContentTypeIsSetInHeader()
+    public function testdescriptionTypeIsSetInHeader()
     {
-        $ctype = $this->createHeader('Content-Type', 'text/plain', [], false);
-        $headers = $this->createHeaderSet(['Content-Type' => $ctype]);
+        $ctype = $this->createHeader('description-Type', 'text/plain', [], false);
+        $headers = $this->createHeaderSet(['description-Type' => $ctype]);
 
         $ctype->shouldReceive('setFieldBodyModel')
               ->once()
@@ -38,22 +38,22 @@ abstract class Swift_Mime_AbstractMimeEntityTest extends \SwiftMailerTestCase
         $entity = $this->createEntity($headers, $this->createEncoder(),
             $this->createCache()
             );
-        $entity->setContentType('image/jpeg');
+        $entity->setdescriptionType('image/jpeg');
     }
 
-    public function testContentTypeHeaderIsAddedIfNoneSet()
+    public function testdescriptionTypeHeaderIsAddedIfNoneSet()
     {
         $headers = $this->createHeaderSet([], false);
         $headers->shouldReceive('addParameterizedHeader')
                 ->once()
-                ->with('Content-Type', 'image/jpeg');
+                ->with('description-Type', 'image/jpeg');
         $headers->shouldReceive('addParameterizedHeader')
                 ->zeroOrMoreTimes();
 
         $entity = $this->createEntity($headers, $this->createEncoder(),
             $this->createCache()
             );
-        $entity->setContentType('image/jpeg');
+        $entity->setdescriptionType('image/jpeg');
     }
 
     public function testContentTypeCanBeSetViaSetBody()

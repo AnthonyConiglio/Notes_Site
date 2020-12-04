@@ -51,7 +51,7 @@ class Swift_Encoder_Rfc2231Encoder implements Swift_Encoder
             $maxLineLength = 75;
         }
 
-        $this->charStream->flushContents();
+        $this->charStream->flushdescriptions();
         $this->charStream->importString($string);
 
         $thisLineLength = $maxLineLength - $firstLineOffset;

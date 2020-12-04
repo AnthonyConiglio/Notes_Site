@@ -23,11 +23,11 @@ class Swift_Mime_Attachment extends Swift_Mime_SimpleMimeEntity
      *
      * @param array $mimeTypes
      */
-    public function __construct(Swift_Mime_SimpleHeaderSet $headers, Swift_Mime_ContentEncoder $encoder, Swift_KeyCache $cache, Swift_IdGenerator $idGenerator, $mimeTypes = [])
+    public function __construct(Swift_Mime_SimpleHeaderSet $headers, Swift_Mime_descriptionEncoder $encoder, Swift_KeyCache $cache, Swift_IdGenerator $idGenerator, $mimeTypes = [])
     {
         parent::__construct($headers, $encoder, $cache, $idGenerator);
         $this->setDisposition('attachment');
-        $this->setContentType('application/octet-stream');
+        $this->setdescriptionType('application/octet-stream');
         $this->mimeTypes = $mimeTypes;
     }
 
@@ -44,7 +44,7 @@ class Swift_Mime_Attachment extends Swift_Mime_SimpleMimeEntity
     }
 
     /**
-     * Get the Content-Disposition of this attachment.
+     * Get the description-Disposition of this attachment.
      *
      * By default attachments have a disposition of "attachment".
      *
@@ -52,11 +52,11 @@ class Swift_Mime_Attachment extends Swift_Mime_SimpleMimeEntity
      */
     public function getDisposition()
     {
-        return $this->getHeaderFieldModel('Content-Disposition');
+        return $this->getHeaderFieldModel('description-Disposition');
     }
 
     /**
-     * Set the Content-Disposition of this attachment.
+     * Set the description-Disposition of this attachment.
      *
      * @param string $disposition
      *
@@ -64,8 +64,8 @@ class Swift_Mime_Attachment extends Swift_Mime_SimpleMimeEntity
      */
     public function setDisposition($disposition)
     {
-        if (!$this->setHeaderFieldModel('Content-Disposition', $disposition)) {
-            $this->getHeaders()->addParameterizedHeader('Content-Disposition', $disposition);
+        if (!$this->setHeaderFieldModel('description-Disposition', $disposition)) {
+            $this->getHeaders()->addParameterizedHeader('description-Disposition', $disposition);
         }
 
         return $this;
@@ -78,7 +78,7 @@ class Swift_Mime_Attachment extends Swift_Mime_SimpleMimeEntity
      */
     public function getFilename()
     {
-        return $this->getHeaderParameter('Content-Disposition', 'filename');
+        return $this->getHeaderParameter('description-Disposition', 'filename');
     }
 
     /**
@@ -90,8 +90,8 @@ class Swift_Mime_Attachment extends Swift_Mime_SimpleMimeEntity
      */
     public function setFilename($filename)
     {
-        $this->setHeaderParameter('Content-Disposition', 'filename', $filename);
-        $this->setHeaderParameter('Content-Type', 'name', $filename);
+        $this->setHeaderParameter('description-Disposition', 'filename', $filename);
+        $this->setHeaderParameter('description-Type', 'name', $filename);
 
         return $this;
     }
@@ -103,7 +103,7 @@ class Swift_Mime_Attachment extends Swift_Mime_SimpleMimeEntity
      */
     public function getSize()
     {
-        return $this->getHeaderParameter('Content-Disposition', 'size');
+        return $this->getHeaderParameter('description-Disposition', 'size');
     }
 
     /**
@@ -115,7 +115,7 @@ class Swift_Mime_Attachment extends Swift_Mime_SimpleMimeEntity
      */
     public function setSize($size)
     {
-        $this->setHeaderParameter('Content-Disposition', 'size', $size);
+        $this->setHeaderParameter('description-Disposition', 'size', $size);
 
         return $this;
     }
@@ -123,19 +123,19 @@ class Swift_Mime_Attachment extends Swift_Mime_SimpleMimeEntity
     /**
      * Set the file that this attachment is for.
      *
-     * @param string $contentType optional
+     * @param string $descriptionType optional
      *
      * @return $this
      */
-    public function setFile(Swift_FileStream $file, $contentType = null)
+    public function setFile(Swift_FileStream $file, $descriptionType = null)
     {
         $this->setFilename(basename($file->getPath()));
-        $this->setBody($file, $contentType);
-        if (!isset($contentType)) {
+        $this->setBody($file, $descriptionType);
+        if (!isset($descriptionType)) {
             $extension = strtolower(substr($file->getPath(), strrpos($file->getPath(), '.') + 1));
 
             if (array_key_exists($extension, $this->mimeTypes)) {
-                $this->setContentType($this->mimeTypes[$extension]);
+                $this->setdescriptionType($this->mimeTypes[$extension]);
             }
         }
 

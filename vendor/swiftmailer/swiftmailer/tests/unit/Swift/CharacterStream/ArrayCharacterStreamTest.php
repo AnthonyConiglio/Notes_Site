@@ -222,7 +222,7 @@ class Swift_CharacterStream_ArrayCharacterStreamTest extends \SwiftMailerTestCas
         $this->assertIdenticalBinary(pack('C*', 0xD0, 0xBE), $stream->read(1));
     }
 
-    public function testContentsCanBeFlushed()
+    public function testdescriptionsCanBeFlushed()
     {
         $reader = $this->getReader();
         $factory = $this->getFactory($reader);
@@ -238,7 +238,7 @@ class Swift_CharacterStream_ArrayCharacterStreamTest extends \SwiftMailerTestCas
 
         $stream->importString(pack('C*', 0xD0, 0x94, 0xD0, 0xB6, 0xD0, 0xBE));
 
-        $stream->flushContents();
+        $stream->flushdescriptions();
 
         $this->assertFalse($stream->read(1));
     }

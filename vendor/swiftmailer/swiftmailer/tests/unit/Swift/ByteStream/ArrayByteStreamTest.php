@@ -102,7 +102,7 @@ class Swift_ByteStream_ArrayByteStreamTest extends \PHPUnit\Framework\TestCase
             );
     }
 
-    public function testContentsCanBeFlushed()
+    public function testdescriptionsCanBeFlushed()
     {
         $input = ['a', 'b', 'c'];
         $bs = $this->createArrayStream($input);
@@ -110,7 +110,7 @@ class Swift_ByteStream_ArrayByteStreamTest extends \PHPUnit\Framework\TestCase
         $bs->flushBuffers();
 
         $this->assertFalse($bs->read(1),
-            '%s: Contents have been flushed so read() should return false'
+            '%s: descriptions have been flushed so read() should return false'
             );
     }
 

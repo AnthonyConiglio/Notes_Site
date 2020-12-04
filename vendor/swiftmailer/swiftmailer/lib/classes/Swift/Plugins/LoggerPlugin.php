@@ -37,7 +37,7 @@ class Swift_Plugins_LoggerPlugin implements Swift_Events_CommandListener, Swift_
     }
 
     /**
-     * Clear the log contents.
+     * Clear the log descriptions.
      */
     public function clear()
     {

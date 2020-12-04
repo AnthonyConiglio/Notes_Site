@@ -14,7 +14,7 @@
  *
  * @author Jan Flora <jf@penneo.com>
  */
-class Swift_Mime_ContentEncoder_NullContentEncoder implements Swift_Mime_ContentEncoder
+class Swift_Mime_descriptionEncoder_NulldescriptionEncoder implements Swift_Mime_descriptionEncoder
 {
     /**
      * The name of this encoding scheme (probably 7bit or 8bit).
@@ -24,7 +24,7 @@ class Swift_Mime_ContentEncoder_NullContentEncoder implements Swift_Mime_Content
     private $_name;
 
     /**
-     * Creates a new NullContentEncoder with $name (probably 7bit or 8bit).
+     * Creates a new NulldescriptionEncoder with $name (probably 7bit or 8bit).
      *
      * @param string $name
      */

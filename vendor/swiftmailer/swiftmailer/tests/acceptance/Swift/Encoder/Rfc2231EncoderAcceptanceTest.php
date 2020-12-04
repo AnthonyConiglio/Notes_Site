@@ -33,7 +33,7 @@ class Swift_Encoder_Rfc2231EncoderAcceptanceTest extends \PHPUnit\Framework\Test
                         continue;
                     }
 
-                    $text = file_get_contents($sampleDir.'/'.$sampleFile);
+                    $text = file_get_descriptions($sampleDir.'/'.$sampleFile);
                     $encodedText = $encoder->encodeString($text);
 
                     $this->assertEquals(

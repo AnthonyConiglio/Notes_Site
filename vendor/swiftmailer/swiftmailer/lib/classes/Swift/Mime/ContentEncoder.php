@@ -13,7 +13,7 @@
  *
  * @author Chris Corbyn
  */
-interface Swift_Mime_ContentEncoder extends Swift_Encoder
+interface Swift_Mime_descriptionEncoder extends Swift_Encoder
 {
     /**
      * Encode $in to $out.
@@ -26,7 +26,7 @@ interface Swift_Mime_ContentEncoder extends Swift_Encoder
     public function encodeByteStream(Swift_OutputByteStream $os, Swift_InputByteStream $is, $firstLineOffset = 0, $maxLineLength = 0);
 
     /**
-     * Get the MIME name of this content encoding scheme.
+     * Get the MIME name of this description encoding scheme.
      *
      * @return string
      */

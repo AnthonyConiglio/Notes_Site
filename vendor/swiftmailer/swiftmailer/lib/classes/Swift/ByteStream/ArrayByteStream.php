@@ -162,7 +162,7 @@ class Swift_ByteStream_ArrayByteStream implements Swift_InputByteStream, Swift_O
     }
 
     /**
-     * Flush the contents of the stream (empty it) and set the internal pointer
+     * Flush the descriptions of the stream (empty it) and set the internal pointer
      * to the beginning.
      */
     public function flushBuffers()

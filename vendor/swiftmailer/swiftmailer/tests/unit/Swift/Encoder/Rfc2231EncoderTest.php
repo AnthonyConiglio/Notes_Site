@@ -26,7 +26,7 @@ class Swift_Encoder_Rfc2231EncoderTest extends \SwiftMailerTestCase
                        ->andReturn($char);
         }
 
-        $charStream->shouldReceive('flushContents')
+        $charStream->shouldReceive('flushdescriptions')
                     ->once();
         $charStream->shouldReceive('importString')
                     ->once()
@@ -56,7 +56,7 @@ class Swift_Encoder_Rfc2231EncoderTest extends \SwiftMailerTestCase
                        ->once()
                        ->andReturn($char);
         }
-        $charStream->shouldReceive('flushContents')
+        $charStream->shouldReceive('flushdescriptions')
                     ->once();
         $charStream->shouldReceive('importString')
                     ->once()
@@ -86,7 +86,7 @@ class Swift_Encoder_Rfc2231EncoderTest extends \SwiftMailerTestCase
                        ->once()
                        ->andReturn($char);
         }
-        $charStream->shouldReceive('flushContents')
+        $charStream->shouldReceive('flushdescriptions')
                     ->once();
         $charStream->shouldReceive('importString')
                     ->once()
@@ -119,7 +119,7 @@ class Swift_Encoder_Rfc2231EncoderTest extends \SwiftMailerTestCase
                        ->once()
                        ->andReturn($char);
         }
-        $charStream->shouldReceive('flushContents')
+        $charStream->shouldReceive('flushdescriptions')
                     ->once();
         $charStream->shouldReceive('importString')
                     ->once()

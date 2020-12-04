@@ -28,7 +28,7 @@ class Swift_Encoder_Base64EncoderAcceptanceTest extends \PHPUnit\Framework\TestC
                         continue;
                     }
 
-                    $text = file_get_contents($sampleDir.'/'.$sampleFile);
+                    $text = file_get_descriptions($sampleDir.'/'.$sampleFile);
                     $encodedText = $this->encoder->encodeString($text);
 
                     $this->assertEquals(

@@ -22,11 +22,11 @@ class Swift_Image extends Swift_EmbeddedFile
      *
      * @param string|Swift_OutputByteStream $data
      * @param string                        $filename
-     * @param string                        $contentType
+     * @param string                        $descriptionType
      */
-    public function __construct($data = null, $filename = null, $contentType = null)
+    public function __construct($data = null, $filename = null, $descriptionType = null)
     {
-        parent::__construct($data, $filename, $contentType);
+        parent::__construct($data, $filename, $descriptionType);
     }
 
     /**

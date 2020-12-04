@@ -111,7 +111,7 @@ class Swift_CharacterStream_ArrayCharacterStream implements Swift_CharacterStrea
      */
     public function importString($string)
     {
-        $this->flushContents();
+        $this->flushdescriptions();
         $this->write($string);
     }
 
@@ -257,7 +257,7 @@ class Swift_CharacterStream_ArrayCharacterStream implements Swift_CharacterStrea
     /**
      * Empty the stream and reset the internal pointer.
      */
-    public function flushContents()
+    public function flushdescriptions()
     {
         $this->offset = 0;
         $this->array = [];

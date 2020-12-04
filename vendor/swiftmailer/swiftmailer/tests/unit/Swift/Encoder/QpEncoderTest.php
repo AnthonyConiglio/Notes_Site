@@ -33,7 +33,7 @@ class Swift_Encoder_QpEncoderTest extends \SwiftMailerTestCase
             $char = chr($ordinal);
 
             $charStream = $this->createCharStream();
-            $charStream->shouldReceive('flushContents')
+            $charStream->shouldReceive('flushdescriptions')
                        ->once();
             $charStream->shouldReceive('importString')
                        ->once()
@@ -83,7 +83,7 @@ class Swift_Encoder_QpEncoderTest extends \SwiftMailerTestCase
         $string = 'a'.$HT.$HT."\r\n".'b';
 
         $charStream = $this->createCharStream();
-        $charStream->shouldReceive('flushContents')
+        $charStream->shouldReceive('flushdescriptions')
                     ->once();
         $charStream->shouldReceive('importString')
                     ->once()
@@ -107,7 +107,7 @@ class Swift_Encoder_QpEncoderTest extends \SwiftMailerTestCase
         $string = 'a'.$SPACE.$SPACE."\r\n".'b';
 
         $charStream = $this->createCharStream();
-        $charStream->shouldReceive('flushContents')
+        $charStream->shouldReceive('flushdescriptions')
                     ->once();
         $charStream->shouldReceive('importString')
                     ->once()
@@ -146,7 +146,7 @@ class Swift_Encoder_QpEncoderTest extends \SwiftMailerTestCase
                     printable, of course.
 
                     Note that many implementations may elect to encode the
-                    local representation of various content types directly
+                    local representation of various description types directly
                     rather than converting to canonical form first,
                     encoding, and then converting back to local
                     representation.  In particular, this may apply to plain
@@ -160,7 +160,7 @@ class Swift_Encoder_QpEncoderTest extends \SwiftMailerTestCase
         $string = 'a'."\r\n".'b'."\r\n".'c'."\r\n";
 
         $charStream = $this->createCharStream();
-        $charStream->shouldReceive('flushContents')
+        $charStream->shouldReceive('flushdescriptions')
                     ->once();
         $charStream->shouldReceive('importString')
                     ->once()
@@ -196,7 +196,7 @@ class Swift_Encoder_QpEncoderTest extends \SwiftMailerTestCase
         $input = str_repeat('a', 140);
 
         $charStream = $this->createCharStream();
-        $charStream->shouldReceive('flushContents')
+        $charStream->shouldReceive('flushdescriptions')
                     ->once();
         $charStream->shouldReceive('importString')
                     ->once()
@@ -227,7 +227,7 @@ class Swift_Encoder_QpEncoderTest extends \SwiftMailerTestCase
         $input = str_repeat('a', 100);
 
         $charStream = $this->createCharStream();
-        $charStream->shouldReceive('flushContents')
+        $charStream->shouldReceive('flushdescriptions')
                     ->once();
         $charStream->shouldReceive('importString')
                     ->once()
@@ -262,7 +262,7 @@ class Swift_Encoder_QpEncoderTest extends \SwiftMailerTestCase
             $char = chr($ordinal);
 
             $charStream = $this->createCharStream();
-            $charStream->shouldReceive('flushContents')
+            $charStream->shouldReceive('flushdescriptions')
                        ->once();
             $charStream->shouldReceive('importString')
                        ->once()
@@ -291,7 +291,7 @@ class Swift_Encoder_QpEncoderTest extends \SwiftMailerTestCase
         $char = '=';
 
         $charStream = $this->createCharStream();
-        $charStream->shouldReceive('flushContents')
+        $charStream->shouldReceive('flushdescriptions')
                     ->once();
         $charStream->shouldReceive('importString')
                     ->once()
@@ -318,7 +318,7 @@ class Swift_Encoder_QpEncoderTest extends \SwiftMailerTestCase
             $char = chr($ordinal);
 
             $charStream = $this->createCharStream();
-            $charStream->shouldReceive('flushContents')
+            $charStream->shouldReceive('flushdescriptions')
                        ->once();
             $charStream->shouldReceive('importString')
                        ->once()
@@ -343,7 +343,7 @@ class Swift_Encoder_QpEncoderTest extends \SwiftMailerTestCase
         $input = str_repeat('a', 140);
 
         $charStream = $this->createCharStream();
-        $charStream->shouldReceive('flushContents')
+        $charStream->shouldReceive('flushdescriptions')
                     ->once();
         $charStream->shouldReceive('importString')
                     ->once()

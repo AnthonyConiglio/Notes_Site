@@ -16,7 +16,7 @@
 class Swift_Plugins_Loggers_ArrayLogger implements Swift_Plugins_Logger
 {
     /**
-     * The log contents.
+     * The log descriptions.
      *
      * @var array
      */
@@ -53,7 +53,7 @@ class Swift_Plugins_Loggers_ArrayLogger implements Swift_Plugins_Logger
     }
 
     /**
-     * Clear the log contents.
+     * Clear the log descriptions.
      */
     public function clear()
     {

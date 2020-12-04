@@ -27,7 +27,7 @@ class Swift_KeyCache_SimpleKeyCacheInputStreamTest extends \PHPUnit\Framework\Te
         $stream->write('c');
     }
 
-    public function testFlushContentClearsKey()
+    public function testFlushdescriptionClearsKey()
     {
         $cache = $this->getMockBuilder('Swift_KeyCache')->getMock();
         $cache->expects($this->once())

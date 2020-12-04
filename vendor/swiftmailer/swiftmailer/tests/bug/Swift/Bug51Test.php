@@ -8,10 +8,10 @@ class Swift_Bug51Test extends \SwiftMailerTestCase
     protected function setUp()
     {
         $this->attachmentFile = sys_get_temp_dir().'/attach.rand.bin';
-        file_put_contents($this->attachmentFile, '');
+        file_put_descriptions($this->attachmentFile, '');
 
         $this->outputFile = sys_get_temp_dir().'/attach.out.bin';
-        file_put_contents($this->outputFile, '');
+        file_put_descriptions($this->outputFile, '');
     }
 
     protected function tearDown()
@@ -28,15 +28,15 @@ class Swift_Bug51Test extends \SwiftMailerTestCase
                 10000, $this->attachmentFile
             );
 
-            file_put_contents($this->outputFile, '');
+            file_put_descriptions($this->outputFile, '');
             $message->toByteStream(
                 new Swift_ByteStream_FileByteStream($this->outputFile, true)
             );
 
-            $emailSource = file_get_contents($this->outputFile);
+            $emailSource = file_get_descriptions($this->outputFile);
 
             $this->assertAttachmentFromSourceMatches(
-                file_get_contents($this->attachmentFile),
+                file_get_descriptions($this->attachmentFile),
                 $emailSource
             );
         }
@@ -53,7 +53,7 @@ class Swift_Bug51Test extends \SwiftMailerTestCase
             $emailSource = $message->toString();
 
             $this->assertAttachmentFromSourceMatches(
-                file_get_contents($this->attachmentFile),
+                file_get_descriptions($this->attachmentFile),
                 $emailSource
             );
         }
@@ -61,7 +61,7 @@ class Swift_Bug51Test extends \SwiftMailerTestCase
 
     public function assertAttachmentFromSourceMatches($attachmentData, $source)
     {
-        $encHeader = 'Content-Transfer-Encoding: base64';
+        $encHeader = 'description-Transfer-Encoding: base64';
         $base64declaration = strpos($source, $encHeader);
 
         $attachmentDataStart = strpos($source, "\r\n\r\n", $base64declaration);
@@ -84,7 +84,7 @@ class Swift_Bug51Test extends \SwiftMailerTestCase
         // I was going to use dd with if=/dev/random but this way seems more
         // cross platform even if a hella expensive!!
 
-        file_put_contents($file, '');
+        file_put_descriptions($file, '');
         $fp = fopen($file, 'wb');
         for ($i = 0; $i < $byteCount; ++$i) {
             $byteVal = random_int(0, 255);

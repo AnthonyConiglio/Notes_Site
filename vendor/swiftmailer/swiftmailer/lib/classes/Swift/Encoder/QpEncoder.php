@@ -173,7 +173,7 @@ class Swift_Encoder_QpEncoder implements Swift_Encoder
         $currentLine = &$lines[$lNo++];
         $size = $lineLen = 0;
 
-        $this->charStream->flushContents();
+        $this->charStream->flushdescriptions();
         $this->charStream->importString($string);
 
         // Fetching more than 4 chars at one is slower, as is fetching fewer bytes

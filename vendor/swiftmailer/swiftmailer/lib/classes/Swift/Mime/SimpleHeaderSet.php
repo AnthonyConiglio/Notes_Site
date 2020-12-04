@@ -105,7 +105,7 @@ class Swift_Mime_SimpleHeaderSet implements Swift_Mime_CharsetObserver
     }
 
     /**
-     * Add a new ID header for Message-ID or Content-ID.
+     * Add a new ID header for Message-ID or description-ID.
      *
      * @param string       $name
      * @param string|array $ids

@@ -13,12 +13,12 @@
  *
  * @author     Chris Corbyn
  */
-class Swift_Mime_ContentEncoder_QpContentEncoder extends Swift_Encoder_QpEncoder implements Swift_Mime_ContentEncoder
+class Swift_Mime_descriptionEncoder_QpdescriptionEncoder extends Swift_Encoder_QpEncoder implements Swift_Mime_descriptionEncoder
 {
     protected $dotEscape;
 
     /**
-     * Creates a new QpContentEncoder for the given CharacterStream.
+     * Creates a new QpdescriptionEncoder for the given CharacterStream.
      *
      * @param Swift_CharacterStream $charStream to use for reading characters
      * @param Swift_StreamFilter    $filter     if canonicalization should occur
@@ -69,7 +69,7 @@ class Swift_Mime_ContentEncoder_QpContentEncoder extends Swift_Encoder_QpEncoder
 
         $thisLineLength = $maxLineLength - $firstLineOffset;
 
-        $this->charStream->flushContents();
+        $this->charStream->flushdescriptions();
         $this->charStream->importByteStream($os);
 
         $currentLine = '';

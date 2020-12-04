@@ -1,18 +1,18 @@
 <?php
 
-class Swift_Mime_ContentEncoder_NativeQpContentEncoderAcceptanceTest extends \PHPUnit\Framework\TestCase
+class Swift_Mime_descriptionEncoder_NativeQpdescriptionEncoderAcceptanceTest extends \PHPUnit\Framework\TestCase
 {
     protected $_samplesDir;
 
     /**
-     * @var Swift_Mime_ContentEncoder_NativeQpContentEncoder
+     * @var Swift_Mime_descriptionEncoder_NativeQpdescriptionEncoder
      */
     protected $encoder;
 
     protected function setUp()
     {
         $this->samplesDir = realpath(__DIR__.'/../../../../_samples/charsets');
-        $this->encoder = new Swift_Mime_ContentEncoder_NativeQpContentEncoder();
+        $this->encoder = new Swift_Mime_descriptionEncoder_NativeQpdescriptionEncoder();
     }
 
     public function testEncodingAndDecodingSamples()
@@ -32,7 +32,7 @@ class Swift_Mime_ContentEncoder_NativeQpContentEncoderAcceptanceTest extends \PH
                         continue;
                     }
 
-                    $text = file_get_contents($sampleDir.'/'.$sampleFile);
+                    $text = file_get_descriptions($sampleDir.'/'.$sampleFile);
 
                     $os = new Swift_ByteStream_ArrayByteStream();
                     $os->write($text);
@@ -82,7 +82,7 @@ class Swift_Mime_ContentEncoder_NativeQpContentEncoderAcceptanceTest extends \PH
     private function createEncoderFromContainer()
     {
         return Swift_DependencyContainer::getInstance()
-            ->lookup('mime.nativeqpcontentencoder')
+            ->lookup('mime.nativeqpdescriptionencoder')
             ;
     }
 }

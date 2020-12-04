@@ -4,7 +4,7 @@ use Egulias\EmailValidator\EmailValidator;
 
 class Swift_Mime_MimePartAcceptanceTest extends \PHPUnit\Framework\TestCase
 {
-    private $contentEncoder;
+    private $descriptionEncoder;
     private $cache;
     private $headers;
     private $emailValidator;
@@ -15,7 +15,7 @@ class Swift_Mime_MimePartAcceptanceTest extends \PHPUnit\Framework\TestCase
             new Swift_KeyCache_SimpleKeyCacheInputStream()
             );
         $factory = new Swift_CharacterReaderFactory_SimpleCharacterReaderFactory();
-        $this->contentEncoder = new Swift_Mime_ContentEncoder_QpContentEncoder(
+        $this->descriptionEncoder = new Swift_Mime_descriptionEncoder_QpdescriptionEncoder(
             new Swift_CharacterStream_ArrayCharacterStream($factory, 'utf-8'),
             new Swift_StreamFilters_ByteArrayReplacementFilter(
                 [[0x0D, 0x0A], [0x0D], [0x0A]],
@@ -39,12 +39,12 @@ class Swift_Mime_MimePartAcceptanceTest extends \PHPUnit\Framework\TestCase
     public function testCharsetIsSetInHeader()
     {
         $part = $this->createMimePart();
-        $part->setContentType('text/plain');
+        $part->setdescriptionType('text/plain');
         $part->setCharset('utf-8');
         $part->setBody('foobar');
         $this->assertEquals(
-            'Content-Type: text/plain; charset=utf-8'."\r\n".
-            'Content-Transfer-Encoding: quoted-printable'."\r\n".
+            'description-Type: text/plain; charset=utf-8'."\r\n".
+            'description-Transfer-Encoding: quoted-printable'."\r\n".
             "\r\n".
             'foobar',
             $part->toString()
@@ -54,12 +54,12 @@ class Swift_Mime_MimePartAcceptanceTest extends \PHPUnit\Framework\TestCase
     public function testFormatIsSetInHeaders()
     {
         $part = $this->createMimePart();
-        $part->setContentType('text/plain');
+        $part->setdescriptionType('text/plain');
         $part->setFormat('flowed');
         $part->setBody('> foobar');
         $this->assertEquals(
-            'Content-Type: text/plain; format=flowed'."\r\n".
-            'Content-Transfer-Encoding: quoted-printable'."\r\n".
+            'description-Type: text/plain; format=flowed'."\r\n".
+            'description-Transfer-Encoding: quoted-printable'."\r\n".
             "\r\n".
             '> foobar',
             $part->toString()
@@ -69,12 +69,12 @@ class Swift_Mime_MimePartAcceptanceTest extends \PHPUnit\Framework\TestCase
     public function testDelSpIsSetInHeaders()
     {
         $part = $this->createMimePart();
-        $part->setContentType('text/plain');
+        $part->setdescriptionType('text/plain');
         $part->setDelSp(true);
         $part->setBody('foobar');
         $this->assertEquals(
-            'Content-Type: text/plain; delsp=yes'."\r\n".
-            'Content-Transfer-Encoding: quoted-printable'."\r\n".
+            'description-Type: text/plain; delsp=yes'."\r\n".
+            'description-Transfer-Encoding: quoted-printable'."\r\n".
             "\r\n".
             'foobar',
             $part->toString()
@@ -84,14 +84,14 @@ class Swift_Mime_MimePartAcceptanceTest extends \PHPUnit\Framework\TestCase
     public function testAll3ParamsInHeaders()
     {
         $part = $this->createMimePart();
-        $part->setContentType('text/plain');
+        $part->setdescriptionType('text/plain');
         $part->setCharset('utf-8');
         $part->setFormat('fixed');
         $part->setDelSp(true);
         $part->setBody('foobar');
         $this->assertEquals(
-            'Content-Type: text/plain; charset=utf-8; format=fixed; delsp=yes'."\r\n".
-            'Content-Transfer-Encoding: quoted-printable'."\r\n".
+            'description-Type: text/plain; charset=utf-8; format=fixed; delsp=yes'."\r\n".
+            'description-Transfer-Encoding: quoted-printable'."\r\n".
             "\r\n".
             'foobar',
             $part->toString()
@@ -101,12 +101,12 @@ class Swift_Mime_MimePartAcceptanceTest extends \PHPUnit\Framework\TestCase
     public function testBodyIsCanonicalized()
     {
         $part = $this->createMimePart();
-        $part->setContentType('text/plain');
+        $part->setdescriptionType('text/plain');
         $part->setCharset('utf-8');
         $part->setBody("foobar\r\rtest\ning\r");
         $this->assertEquals(
-            'Content-Type: text/plain; charset=utf-8'."\r\n".
-            'Content-Transfer-Encoding: quoted-printable'."\r\n".
+            'description-Type: text/plain; charset=utf-8'."\r\n".
+            'description-Transfer-Encoding: quoted-printable'."\r\n".
             "\r\n".
             "foobar\r\n".
             "\r\n".
@@ -120,7 +120,7 @@ class Swift_Mime_MimePartAcceptanceTest extends \PHPUnit\Framework\TestCase
     {
         $entity = new Swift_Mime_MimePart(
             $this->headers,
-            $this->contentEncoder,
+            $this->descriptionEncoder,
             $this->cache,
             $this->idGenerator
         );

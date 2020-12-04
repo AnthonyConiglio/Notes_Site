@@ -25,7 +25,7 @@ Swift_DependencyContainer::getInstance()
     ->asNewInstanceOf('Swift_Mime_SimpleMessage')
     ->withDependencies([
         'mime.headerset',
-        'mime.textcontentencoder',
+        'mime.textdescriptionencoder',
         'cache',
         'mime.idgenerator',
         'properties.charset',
@@ -35,7 +35,7 @@ Swift_DependencyContainer::getInstance()
     ->asNewInstanceOf('Swift_Mime_MimePart')
     ->withDependencies([
         'mime.headerset',
-        'mime.textcontentencoder',
+        'mime.textdescriptionencoder',
         'cache',
         'mime.idgenerator',
         'properties.charset',
@@ -45,7 +45,7 @@ Swift_DependencyContainer::getInstance()
     ->asNewInstanceOf('Swift_Mime_Attachment')
     ->withDependencies([
         'mime.headerset',
-        'mime.base64contentencoder',
+        'mime.base64descriptionencoder',
         'cache',
         'mime.idgenerator',
     ])
@@ -55,7 +55,7 @@ Swift_DependencyContainer::getInstance()
     ->asNewInstanceOf('Swift_Mime_EmbeddedFile')
     ->withDependencies([
         'mime.headerset',
-        'mime.base64contentencoder',
+        'mime.base64descriptionencoder',
         'cache',
         'mime.idgenerator',
     ])
@@ -95,36 +95,36 @@ Swift_DependencyContainer::getInstance()
     ->register('mime.characterreaderfactory')
     ->asSharedInstanceOf('Swift_CharacterReaderFactory_SimpleCharacterReaderFactory')
 
-    ->register('mime.textcontentencoder')
-    ->asAliasOf('mime.qpcontentencoder')
+    ->register('mime.textdescriptionencoder')
+    ->asAliasOf('mime.qpdescriptionencoder')
 
-    ->register('mime.safeqpcontentencoder')
-    ->asNewInstanceOf('Swift_Mime_ContentEncoder_QpContentEncoder')
+    ->register('mime.safeqpdescriptionencoder')
+    ->asNewInstanceOf('Swift_Mime_descriptionEncoder_QpdescriptionEncoder')
     ->withDependencies(['mime.charstream', 'mime.bytecanonicalizer'])
 
-    ->register('mime.rawcontentencoder')
-    ->asNewInstanceOf('Swift_Mime_ContentEncoder_RawContentEncoder')
+    ->register('mime.rawdescriptionencoder')
+    ->asNewInstanceOf('Swift_Mime_descriptionEncoder_RawdescriptionEncoder')
 
-    ->register('mime.nativeqpcontentencoder')
+    ->register('mime.nativeqpdescriptionencoder')
     ->withDependencies(['properties.charset'])
-    ->asNewInstanceOf('Swift_Mime_ContentEncoder_NativeQpContentEncoder')
+    ->asNewInstanceOf('Swift_Mime_descriptionEncoder_NativeQpdescriptionEncoder')
 
-    ->register('mime.qpcontentencoder')
-    ->asNewInstanceOf('Swift_Mime_ContentEncoder_QpContentEncoderProxy')
-    ->withDependencies(['mime.safeqpcontentencoder', 'mime.nativeqpcontentencoder', 'properties.charset'])
+    ->register('mime.qpdescriptionencoder')
+    ->asNewInstanceOf('Swift_Mime_descriptionEncoder_QpdescriptionEncoderProxy')
+    ->withDependencies(['mime.safeqpdescriptionencoder', 'mime.nativeqpdescriptionencoder', 'properties.charset'])
 
-    ->register('mime.7bitcontentencoder')
-    ->asNewInstanceOf('Swift_Mime_ContentEncoder_PlainContentEncoder')
+    ->register('mime.7bitdescriptionencoder')
+    ->asNewInstanceOf('Swift_Mime_descriptionEncoder_PlaindescriptionEncoder')
     ->addConstructorValue('7bit')
     ->addConstructorValue(true)
 
-    ->register('mime.8bitcontentencoder')
-    ->asNewInstanceOf('Swift_Mime_ContentEncoder_PlainContentEncoder')
+    ->register('mime.8bitdescriptionencoder')
+    ->asNewInstanceOf('Swift_Mime_descriptionEncoder_PlaindescriptionEncoder')
     ->addConstructorValue('8bit')
     ->addConstructorValue(true)
 
-    ->register('mime.base64contentencoder')
-    ->asSharedInstanceOf('Swift_Mime_ContentEncoder_Base64ContentEncoder')
+    ->register('mime.base64descriptionencoder')
+    ->asSharedInstanceOf('Swift_Mime_descriptionEncoder_Base64descriptionEncoder')
 
     ->register('mime.rfc2231encoder')
     ->asNewInstanceOf('Swift_Encoder_Rfc2231Encoder')

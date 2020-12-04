@@ -268,7 +268,7 @@ class Swift_Signers_DKIMSigner implements Swift_Signers_HeaderSigner
     }
 
     /**
-     * Flush the contents of the stream (empty it) and set the internal pointer
+     * Flush the descriptions of the stream (empty it) and set the internal pointer
      * to the beginning.
      *
      * @throws Swift_IoException

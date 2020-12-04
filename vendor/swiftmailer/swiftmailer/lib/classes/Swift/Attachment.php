@@ -22,9 +22,9 @@ class Swift_Attachment extends Swift_Mime_Attachment
      *
      * @param string|Swift_OutputByteStream $data
      * @param string                        $filename
-     * @param string                        $contentType
+     * @param string                        $descriptionType
      */
-    public function __construct($data = null, $filename = null, $contentType = null)
+    public function __construct($data = null, $filename = null, $descriptionType = null)
     {
         call_user_func_array(
             [$this, 'Swift_Mime_Attachment::__construct'],
@@ -32,7 +32,7 @@ class Swift_Attachment extends Swift_Mime_Attachment
                 ->createDependenciesFor('mime.attachment')
             );
 
-        $this->setBody($data, $contentType);
+        $this->setBody($data, $descriptionType);
         $this->setFilename($filename);
     }
 
@@ -40,15 +40,15 @@ class Swift_Attachment extends Swift_Mime_Attachment
      * Create a new Attachment from a filesystem path.
      *
      * @param string $path
-     * @param string $contentType optional
+     * @param string $descriptionType optional
      *
      * @return self
      */
-    public static function fromPath($path, $contentType = null)
+    public static function fromPath($path, $descriptionType = null)
     {
         return (new self())->setFile(
             new Swift_ByteStream_FileByteStream($path),
-            $contentType
+            $descriptionType
         );
     }
 }

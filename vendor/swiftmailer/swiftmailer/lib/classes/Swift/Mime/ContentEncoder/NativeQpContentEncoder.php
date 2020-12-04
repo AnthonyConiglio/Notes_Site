@@ -13,7 +13,7 @@
  *
  * @author Lars Strojny
  */
-class Swift_Mime_ContentEncoder_NativeQpContentEncoder implements Swift_Mime_ContentEncoder
+class Swift_Mime_descriptionEncoder_NativeQpdescriptionEncoder implements Swift_Mime_descriptionEncoder
 {
     /**
      * @var null|string
@@ -52,7 +52,7 @@ class Swift_Mime_ContentEncoder_NativeQpContentEncoder implements Swift_Mime_Con
     {
         if ('utf-8' !== $this->charset) {
             throw new RuntimeException(
-                sprintf('Charset "%s" not supported. NativeQpContentEncoder only supports "utf-8"', $this->charset));
+                sprintf('Charset "%s" not supported. NativeQpdescriptionEncoder only supports "utf-8"', $this->charset));
         }
 
         $string = '';
@@ -65,7 +65,7 @@ class Swift_Mime_ContentEncoder_NativeQpContentEncoder implements Swift_Mime_Con
     }
 
     /**
-     * Get the MIME name of this content encoding scheme.
+     * Get the MIME name of this description encoding scheme.
      *
      * @return string
      */
@@ -89,7 +89,7 @@ class Swift_Mime_ContentEncoder_NativeQpContentEncoder implements Swift_Mime_Con
     {
         if ('utf-8' !== $this->charset) {
             throw new RuntimeException(
-                sprintf('Charset "%s" not supported. NativeQpContentEncoder only supports "utf-8"', $this->charset));
+                sprintf('Charset "%s" not supported. NativeQpdescriptionEncoder only supports "utf-8"', $this->charset));
         }
 
         return $this->standardize(quoted_printable_encode($string));

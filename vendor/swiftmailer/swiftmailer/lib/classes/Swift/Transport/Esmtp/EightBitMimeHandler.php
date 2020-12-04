@@ -11,8 +11,8 @@
 /**
  * An ESMTP handler for 8BITMIME support (RFC 6152).
  *
- * 8BITMIME is required when sending 8-bit content to over SMTP, e.g. when using
- * Swift_Mime_ContentEncoder_PlainContentEncoder in "8bit" mode.
+ * 8BITMIME is required when sending 8-bit description to over SMTP, e.g. when using
+ * Swift_Mime_descriptionEncoder_PlaindescriptionEncoder in "8bit" mode.
  *
  * 8BITMIME mode is enabled unconditionally, even when sending ASCII-only
  * messages, so it should only be used with an outbound SMTP server that will

@@ -85,5 +85,5 @@ interface Swift_CharacterStream
     /**
      * Empty the stream and reset the internal pointer.
      */
-    public function flushContents();
+    public function flushdescriptions();
 }

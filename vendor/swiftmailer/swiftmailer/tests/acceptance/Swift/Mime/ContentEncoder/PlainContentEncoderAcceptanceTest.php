@@ -1,6 +1,6 @@
 <?php
 
-class Swift_Mime_ContentEncoder_PlainContentEncoderAcceptanceTest extends \PHPUnit\Framework\TestCase
+class Swift_Mime_descriptionEncoder_PlaindescriptionEncoderAcceptanceTest extends \PHPUnit\Framework\TestCase
 {
     private $samplesDir;
     private $encoder;
@@ -8,7 +8,7 @@ class Swift_Mime_ContentEncoder_PlainContentEncoderAcceptanceTest extends \PHPUn
     protected function setUp()
     {
         $this->samplesDir = realpath(__DIR__.'/../../../../_samples/charsets');
-        $this->encoder = new Swift_Mime_ContentEncoder_PlainContentEncoder('8bit');
+        $this->encoder = new Swift_Mime_descriptionEncoder_PlaindescriptionEncoder('8bit');
     }
 
     public function testEncodingAndDecodingSamplesString()
@@ -28,7 +28,7 @@ class Swift_Mime_ContentEncoder_PlainContentEncoderAcceptanceTest extends \PHPUn
                         continue;
                     }
 
-                    $text = file_get_contents($sampleDir.'/'.$sampleFile);
+                    $text = file_get_descriptions($sampleDir.'/'.$sampleFile);
                     $encodedText = $this->encoder->encodeString($text);
 
                     $this->assertEquals(
@@ -60,7 +60,7 @@ class Swift_Mime_ContentEncoder_PlainContentEncoderAcceptanceTest extends \PHPUn
                         continue;
                     }
 
-                    $text = file_get_contents($sampleDir.'/'.$sampleFile);
+                    $text = file_get_descriptions($sampleDir.'/'.$sampleFile);
 
                     $os = new Swift_ByteStream_ArrayByteStream();
                     $os->write($text);

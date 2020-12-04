@@ -9,10 +9,10 @@ class Swift_Bug76Test extends \PHPUnit\Framework\TestCase
     protected function setUp()
     {
         $this->inputFile = sys_get_temp_dir().'/in.bin';
-        file_put_contents($this->inputFile, '');
+        file_put_descriptions($this->inputFile, '');
 
         $this->outputFile = sys_get_temp_dir().'/out.bin';
-        file_put_contents($this->outputFile, '');
+        file_put_descriptions($this->outputFile, '');
 
         $this->encoder = $this->createEncoder();
     }
@@ -50,7 +50,7 @@ class Swift_Bug76Test extends \PHPUnit\Framework\TestCase
         // I was going to use dd with if=/dev/random but this way seems more
         // cross platform even if a hella expensive!!
 
-        file_put_contents($file, '');
+        file_put_descriptions($file, '');
         $fp = fopen($file, 'wb');
         for ($i = 0; $i < $byteCount; ++$i) {
             $byteVal = random_int(0, 255);
@@ -61,7 +61,7 @@ class Swift_Bug76Test extends \PHPUnit\Framework\TestCase
 
     private function createEncoder()
     {
-        return new Swift_Mime_ContentEncoder_Base64ContentEncoder();
+        return new Swift_Mime_descriptionEncoder_Base64descriptionEncoder();
     }
 
     private function createStream($file)

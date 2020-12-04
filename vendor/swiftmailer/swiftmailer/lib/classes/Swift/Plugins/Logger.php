@@ -23,7 +23,7 @@ interface Swift_Plugins_Logger
     public function add($entry);
 
     /**
-     * Clear the log contents.
+     * Clear the log descriptions.
      */
     public function clear();
 

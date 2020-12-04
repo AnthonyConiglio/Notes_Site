@@ -153,7 +153,7 @@ function verifyUser($token){
 			$_SESSION['id']= $user['id'];
 			$_SESSION['username']= $user['username'];
 			$_SESSION['email']= $user['email'];
-			$_SESSION['verified']= $user['verified'];
+			$_SESSION['verified']= 1;
 			$_SESSION['message'] = "Your email address has been confirmed!";
 			$_SESSION['alert-class'] = "alert-success";
 			header('location: index.php');
@@ -235,4 +235,5 @@ function resetPassword($token){
 	exit(0);	
 	
 }
+
 

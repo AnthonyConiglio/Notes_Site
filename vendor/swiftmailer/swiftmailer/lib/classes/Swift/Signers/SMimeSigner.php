@@ -180,7 +180,7 @@ class Swift_Signers_SMimeSigner implements Swift_Signers_BodySigner
      * Specify whether to wrap the entire MIME message in the S/MIME message.
      *
      * According to RFC5751 section 3.1:
-     * In order to protect outer, non-content-related message header fields
+     * In order to protect outer, non-description-related message header fields
      * (for instance, the "Subject", "To", "From", and "Cc" fields), the
      * sending client MAY wrap a full MIME message in a message/rfc822
      * wrapper in order to apply S/MIME security services to these header
@@ -223,7 +223,7 @@ class Swift_Signers_SMimeSigner implements Swift_Signers_BodySigner
      */
     public function getAlteredHeaders()
     {
-        return ['Content-Type', 'Content-Transfer-Encoding', 'Content-Disposition'];
+        return ['description-Type', 'description-Transfer-Encoding', 'description-Disposition'];
     }
 
     /**
@@ -251,9 +251,9 @@ class Swift_Signers_SMimeSigner implements Swift_Signers_BodySigner
                 $message,
                 $signMessage,
                 [
-                    'Content-Type',
-                    'Content-Transfer-Encoding',
-                    'Content-Disposition',
+                    'description-Type',
+                    'description-Transfer-Encoding',
+                    'description-Disposition',
                 ]
             );
         }
@@ -278,7 +278,7 @@ class Swift_Signers_SMimeSigner implements Swift_Signers_BodySigner
             throw new Swift_IoException(sprintf('Failed to sign S/Mime message. Error: "%s".', openssl_error_string()));
         }
 
-        // Parse the resulting signed message content back into the Swift message
+        // Parse the resulting signed message description back into the Swift message
         // preserving the original headers
         $this->parseSSLOutput($signedMessageStream, $message);
     }
@@ -308,14 +308,14 @@ class Swift_Signers_SMimeSigner implements Swift_Signers_BodySigner
                 $message,
                 $encryptMessage,
                 [
-                    'Content-Type',
-                    'Content-Transfer-Encoding',
-                    'Content-Disposition',
+                    'description-Type',
+                    'description-Transfer-Encoding',
+                    'description-Disposition',
                 ]
             );
         }
 
-        // Convert the message content (including headers) to a string
+        // Convert the message description (including headers) to a string
         // and place it in a temporary file
         $messageStream = new Swift_ByteStream_TemporaryFileByteStream();
         $encryptMessage->toByteStream($messageStream);
@@ -335,7 +335,7 @@ class Swift_Signers_SMimeSigner implements Swift_Signers_BodySigner
             throw new Swift_IoException(sprintf('Failed to encrypt S/Mime message. Error: "%s".', openssl_error_string()));
         }
 
-        // Parse the resulting signed message content back into the Swift message
+        // Parse the resulting signed message description back into the Swift message
         // preserving the original headers
         $this->parseSSLOutput($encryptedMessageStream, $message);
     }
@@ -404,7 +404,7 @@ class Swift_Signers_SMimeSigner implements Swift_Signers_BodySigner
 
         // Create a new MIME part that wraps the original stream
         $wrappedMessage = new Swift_MimePart($messageStream, 'message/rfc822');
-        $wrappedMessage->setEncoder(new Swift_Mime_ContentEncoder_PlainContentEncoder('7bit'));
+        $wrappedMessage->setEncoder(new Swift_Mime_descriptionEncoder_PlaindescriptionEncoder('7bit'));
 
         return $wrappedMessage;
     }
@@ -428,33 +428,33 @@ class Swift_Signers_SMimeSigner implements Swift_Signers_BodySigner
         // Get the original message headers
         $messageHeaders = $message->getHeaders();
 
-        // Let the stream determine the headers describing the body content,
+        // Let the stream determine the headers describing the body description,
         // since the body of the original message is overwritten by the body
         // coming from the stream.
-        // These are all content-* headers.
+        // These are all description-* headers.
 
         // Default transfer encoding is 7bit if not set
         $encoding = '';
         // Remove all existing transfer encoding headers
-        $messageHeaders->removeAll('Content-Transfer-Encoding');
+        $messageHeaders->removeAll('description-Transfer-Encoding');
         // See whether the stream sets the transfer encoding
-        if (isset($headers['content-transfer-encoding'])) {
-            $encoding = $headers['content-transfer-encoding'];
+        if (isset($headers['description-transfer-encoding'])) {
+            $encoding = $headers['description-transfer-encoding'];
         }
 
-        // We use the null content encoder, since the body is already encoded
+        // We use the null description encoder, since the body is already encoded
         // according to the transfer encoding specified in the stream
-        $message->setEncoder(new Swift_Mime_ContentEncoder_NullContentEncoder($encoding));
+        $message->setEncoder(new Swift_Mime_descriptionEncoder_NulldescriptionEncoder($encoding));
 
         // Set the disposition, if present
-        if (isset($headers['content-disposition'])) {
-            $messageHeaders->addTextHeader('Content-Disposition', $headers['content-disposition']);
+        if (isset($headers['description-disposition'])) {
+            $messageHeaders->addTextHeader('description-Disposition', $headers['description-disposition']);
         }
 
-        // Copy over the body from the stream using the content type dictated
-        // by the stream content
+        // Copy over the body from the stream using the description type dictated
+        // by the stream description
         $message->setChildren([]);
-        $message->setBody($messageStream, $headers['content-type']);
+        $message->setBody($messageStream, $headers['description-type']);
     }
 
     /**

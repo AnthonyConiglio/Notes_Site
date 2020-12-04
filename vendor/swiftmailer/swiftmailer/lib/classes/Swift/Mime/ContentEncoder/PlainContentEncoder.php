@@ -11,13 +11,13 @@
 /**
  * Handles binary/7/8-bit Transfer Encoding in Swift Mailer.
  *
- * When sending 8-bit content over SMTP, you should use
+ * When sending 8-bit description over SMTP, you should use
  * Swift_Transport_Esmtp_EightBitMimeHandler to enable the 8BITMIME SMTP
  * extension.
  *
  * @author Chris Corbyn
  */
-class Swift_Mime_ContentEncoder_PlainContentEncoder implements Swift_Mime_ContentEncoder
+class Swift_Mime_descriptionEncoder_PlaindescriptionEncoder implements Swift_Mime_descriptionEncoder
 {
     /**
      * The name of this encoding scheme (probably 7bit or 8bit).
@@ -34,7 +34,7 @@ class Swift_Mime_ContentEncoder_PlainContentEncoder implements Swift_Mime_Conten
     private $canonical;
 
     /**
-     * Creates a new PlainContentEncoder with $name (probably 7bit or 8bit).
+     * Creates a new PlaindescriptionEncoder with $name (probably 7bit or 8bit).
      *
      * @param string $name
      * @param bool   $canonical If canonicalization transformation should be done.

@@ -4,7 +4,7 @@ use Egulias\EmailValidator\EmailValidator;
 
 class Swift_Mime_AttachmentAcceptanceTest extends \PHPUnit\Framework\TestCase
 {
-    private $contentEncoder;
+    private $descriptionEncoder;
     private $cache;
     private $headers;
     private $emailValidator;
@@ -15,7 +15,7 @@ class Swift_Mime_AttachmentAcceptanceTest extends \PHPUnit\Framework\TestCase
             new Swift_KeyCache_SimpleKeyCacheInputStream()
             );
         $factory = new Swift_CharacterReaderFactory_SimpleCharacterReaderFactory();
-        $this->contentEncoder = new Swift_Mime_ContentEncoder_Base64ContentEncoder();
+        $this->descriptionEncoder = new Swift_Mime_descriptionEncoder_Base64descriptionEncoder();
 
         $headerEncoder = new Swift_Mime_HeaderEncoder_QpHeaderEncoder(
             new Swift_CharacterStream_ArrayCharacterStream($factory, 'utf-8')
@@ -33,12 +33,12 @@ class Swift_Mime_AttachmentAcceptanceTest extends \PHPUnit\Framework\TestCase
     public function testDispositionIsSetInHeader()
     {
         $attachment = $this->createAttachment();
-        $attachment->setContentType('application/pdf');
+        $attachment->setdescriptionType('application/pdf');
         $attachment->setDisposition('inline');
         $this->assertEquals(
-            'Content-Type: application/pdf'."\r\n".
-            'Content-Transfer-Encoding: base64'."\r\n".
-            'Content-Disposition: inline'."\r\n",
+            'description-Type: application/pdf'."\r\n".
+            'description-Transfer-Encoding: base64'."\r\n".
+            'description-Disposition: inline'."\r\n",
             $attachment->toString()
             );
     }
@@ -46,11 +46,11 @@ class Swift_Mime_AttachmentAcceptanceTest extends \PHPUnit\Framework\TestCase
     public function testDispositionIsAttachmentByDefault()
     {
         $attachment = $this->createAttachment();
-        $attachment->setContentType('application/pdf');
+        $attachment->setdescriptionType('application/pdf');
         $this->assertEquals(
-            'Content-Type: application/pdf'."\r\n".
-            'Content-Transfer-Encoding: base64'."\r\n".
-            'Content-Disposition: attachment'."\r\n",
+            'description-Type: application/pdf'."\r\n".
+            'description-Transfer-Encoding: base64'."\r\n".
+            'description-Disposition: attachment'."\r\n",
             $attachment->toString()
             );
     }
@@ -58,12 +58,12 @@ class Swift_Mime_AttachmentAcceptanceTest extends \PHPUnit\Framework\TestCase
     public function testFilenameIsSetInHeader()
     {
         $attachment = $this->createAttachment();
-        $attachment->setContentType('application/pdf');
+        $attachment->setdescriptionType('application/pdf');
         $attachment->setFilename('foo.pdf');
         $this->assertEquals(
-            'Content-Type: application/pdf; name=foo.pdf'."\r\n".
-            'Content-Transfer-Encoding: base64'."\r\n".
-            'Content-Disposition: attachment; filename=foo.pdf'."\r\n",
+            'description-Type: application/pdf; name=foo.pdf'."\r\n".
+            'description-Transfer-Encoding: base64'."\r\n".
+            'description-Disposition: attachment; filename=foo.pdf'."\r\n",
             $attachment->toString()
             );
     }
@@ -71,12 +71,12 @@ class Swift_Mime_AttachmentAcceptanceTest extends \PHPUnit\Framework\TestCase
     public function testSizeIsSetInHeader()
     {
         $attachment = $this->createAttachment();
-        $attachment->setContentType('application/pdf');
+        $attachment->setdescriptionType('application/pdf');
         $attachment->setSize(12340);
         $this->assertEquals(
-            'Content-Type: application/pdf'."\r\n".
-            'Content-Transfer-Encoding: base64'."\r\n".
-            'Content-Disposition: attachment; size=12340'."\r\n",
+            'description-Type: application/pdf'."\r\n".
+            'description-Transfer-Encoding: base64'."\r\n".
+            'description-Disposition: attachment; size=12340'."\r\n",
             $attachment->toString()
             );
     }
@@ -84,13 +84,13 @@ class Swift_Mime_AttachmentAcceptanceTest extends \PHPUnit\Framework\TestCase
     public function testMultipleParametersInHeader()
     {
         $attachment = $this->createAttachment();
-        $attachment->setContentType('application/pdf');
+        $attachment->setdescriptionType('application/pdf');
         $attachment->setFilename('foo.pdf');
         $attachment->setSize(12340);
         $this->assertEquals(
-            'Content-Type: application/pdf; name=foo.pdf'."\r\n".
-            'Content-Transfer-Encoding: base64'."\r\n".
-            'Content-Disposition: attachment; filename=foo.pdf; size=12340'."\r\n",
+            'description-Type: application/pdf; name=foo.pdf'."\r\n".
+            'description-Transfer-Encoding: base64'."\r\n".
+            'description-Disposition: attachment; filename=foo.pdf; size=12340'."\r\n",
             $attachment->toString()
             );
     }
@@ -98,14 +98,14 @@ class Swift_Mime_AttachmentAcceptanceTest extends \PHPUnit\Framework\TestCase
     public function testEndToEnd()
     {
         $attachment = $this->createAttachment();
-        $attachment->setContentType('application/pdf');
+        $attachment->setdescriptionType('application/pdf');
         $attachment->setFilename('foo.pdf');
         $attachment->setSize(12340);
         $attachment->setBody('abcd');
         $this->assertEquals(
-            'Content-Type: application/pdf; name=foo.pdf'."\r\n".
-            'Content-Transfer-Encoding: base64'."\r\n".
-            'Content-Disposition: attachment; filename=foo.pdf; size=12340'."\r\n".
+            'description-Type: application/pdf; name=foo.pdf'."\r\n".
+            'description-Transfer-Encoding: base64'."\r\n".
+            'description-Disposition: attachment; filename=foo.pdf; size=12340'."\r\n".
             "\r\n".
             base64_encode('abcd'),
             $attachment->toString()
@@ -116,7 +116,7 @@ class Swift_Mime_AttachmentAcceptanceTest extends \PHPUnit\Framework\TestCase
     {
         $entity = new Swift_Mime_Attachment(
             $this->headers,
-            $this->contentEncoder,
+            $this->descriptionEncoder,
             $this->cache,
             $this->idGenerator
             );
